@@ -6,8 +6,11 @@ class Users{
     public int num;
     public Users(double[][] A, int i,int num){
       this.id=i;
-      for(int j=0;j<num;j++)
-        this.eval[j]=A[id-1][j];
+      this.num=num;
+      for(int j=0;j<num;j++){
+        if(A[id][j]== -1.0) this.eval[j]=0;
+        else this.eval[j]=A[id][j];
+      }
     }
     public int getID(){
       return this.id;
@@ -17,26 +20,17 @@ class Users{
       return this.eval;
     }
 
-    public int getNum(){
-      return num;
+    public double getEval2(int number_book){
+      return this.eval[number_book-1];
     }
-/*
-    public void clac(Users s){
 
+    public int getNum(){
+      return this.num;
     }
-*/
+
+
 }
-/*
-class Calc{
-  private double[] score_0 = new double[100];
-  private double[] score_1 = new double[100];
-  private
-  public calc(Users s,int m){
-    for(int i=0;i<m;i++)
-      this.score_0[i] =
-  }
-}
-*/
+
 public  class Ex01{
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
@@ -51,12 +45,13 @@ public  class Ex01{
       }
     }
     for(int i=0;i<n;i++)
-      user[i]=new Users(A,i+1,m);
+      user[i]=new Users(A,i,m);
 
     for(int i=0;i<n;i++)
       Eval[i]=user[i].getEval();
+    System.out.println();
     for(int i=0;i<n;i++){
-      for(int j=0;j<n;j++){
+      for(int j=0;j<m;j++){
       System.out.print(Eval[i][j]+" ");
       }
     System.out.println();
